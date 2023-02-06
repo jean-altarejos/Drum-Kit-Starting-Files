@@ -9,6 +9,8 @@ function handleClick() {
     var buttonInnerHTML = this.innerHTML;
     
     makeSound(buttonInnerHTML);
+
+    buttonAnimation(buttonInnerHTML);
     
 }
 
@@ -16,6 +18,8 @@ function handleClick() {
 document.addEventListener("keydown", function(e){
 
     makeSound(e.key);
+
+    buttonAnimation(e.key);
 });
 
 
@@ -64,3 +68,11 @@ function makeSound(key){
     }
 }
 
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("."+ currentKey);
+    activeButton.classList.add("pressed");
+
+    setTimeout(function (){
+        activeButton.classList.remove("pressed");
+    }, 100);
+}
